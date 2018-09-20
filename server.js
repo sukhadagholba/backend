@@ -88,7 +88,31 @@ server.delete('/api/posts/:id', (req, res) => {
 
   });
 
+server.put('/api/posts/:id', (req, res) => {
+  const { title, contents } = req.body;
 
+  const id =  req.params.id;
+  const post = {title, contents};
+
+
+if (!title || !contents) {
+                res.status(400).json({errorMessage: "Please provide title and content for the post."});
+}
+
+else{
+	const request = db.update(id, post);
+
+
+        request.then(response => {
+                if(response===0)  res.status(404).json({ message: "The post with the specified ID does not exist." });
+                else res.status(200).json({message: "Post successfully updated"});
+        })
+
+        .catch(error => {
+        res.status(500).json({ message: "Couldn't update the post" });
+        })
+}
+});
 
 
 server.use(function(req, res) {
