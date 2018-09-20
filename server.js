@@ -45,6 +45,33 @@ server.get('/api/posts/:id', (req, res) => {
 });
 
 
+server.post('/api/posts', (req, res) => {
+
+        const {title, contents} = req.body;
+        const post = {title, contents};
+
+        if (!title || !contents) {
+                res.status(400).json({errorMessage: "Please provide title and content for the post."});
+        }
+
+        else{
+
+        const request = db.insert(post);
+
+        request.then(response => {
+                response.title = post.title;
+                response.contents = post.contents;
+
+                res.status(201).json(response);
+        })
+
+        .catch(error => {
+        res.status(500).json({ message: "There was an error while saving the user to the database" });
+        })
+
+        }  
+});
+
 
 server.use(function(req, res) {
   res.status(404).send("Wrong path, check url");
