@@ -73,6 +73,24 @@ server.post('/api/posts', (req, res) => {
 });
 
 
+server.delete('/api/posts/:id', (req, res) => {
+        const id = req.params.id;
+        const request = db.remove(id);
+
+        request.then(response => {
+                if(response===1) res.json({message: "Post successfully deleted." });
+                else res.status(404).json({ error: "The post with the specified ID does not exist." });
+        })
+
+        .catch(error => {
+        res.status(500).json({ error: "The post could not be removed" });
+        })
+
+  });
+
+
+
+
 server.use(function(req, res) {
   res.status(404).send("Wrong path, check url");
 });
