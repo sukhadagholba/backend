@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import InputForm from '../InputForm/InputForm';
 
 class PostBody extends Component {
 
@@ -43,6 +44,7 @@ deleteHandler = (id) => {
 render() {
     return (
       <div className="main-container">
+	 <InputForm loadPosts ={this.loadPosts}/>   
         <div className="App-container">
         {this.state.posts.map(post =>
        <div className="post-container" key={post.id}>

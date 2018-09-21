@@ -6,7 +6,13 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex('posts').insert([
         {title: 'Welcome Developers', contents: 'Java'},
-        {title: 'Hellooooo', contents: 'Python'}
+        {title: 'Hellooooo', contents: 'Python'},
+	{title: 'Hellooooo', contents: 'C'},
+	{title: 'Hellooooo', contents: 'JavaScript'},
+	{title: 'Hellooooo', contents: 'HTML'},
+	{title: 'Hellooooo', contents: 'JQuery'},
+	{title: 'Hellooooo', contents: 'C++'},
+	{title: 'Hellooooo', contents: 'CSS'}      
       ]);
     });
 };

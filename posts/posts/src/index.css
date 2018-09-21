@@ -26,3 +26,12 @@ body {
 	margin-right: 5%;
 	margin-top: 3%;
 }
+
+.input-style{
+	border: 1px solid chocolate;
+	width: 140px;
+	height: 20px;
+	margin-top: 1%;
+}
+
+
